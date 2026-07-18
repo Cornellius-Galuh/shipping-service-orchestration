@@ -1,0 +1,7 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false #cancel daftar diri sendiri
+    fetch-registry: false #tidak tarik data dari server lain 
