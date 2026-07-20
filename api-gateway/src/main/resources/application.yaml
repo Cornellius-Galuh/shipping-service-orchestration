@@ -15,8 +15,6 @@ spring:
           uri: lb://orchestrator
           predicates:
             - Path=/api/orchestrator/**
-          filters:
-            - StripPrefix=2
 
 eureka:
   client:
