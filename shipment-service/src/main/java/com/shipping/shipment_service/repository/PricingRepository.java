@@ -1,6 +1,6 @@
-package com.shipping.pricing_service.repository;
+package com.shipping.shipment_service.repository;
 
-import com.shipping.pricing_service.model.Pricing;
+import com.shipping.shipment_service.model.Pricing;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
