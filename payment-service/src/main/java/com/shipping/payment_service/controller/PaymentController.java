@@ -41,7 +41,7 @@ public class PaymentController {
 
     // READ ONE BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<Payment> getPaymentById(@PathVariable Integer id) {
+    public ResponseEntity<Payment> getPaymentById(@PathVariable String id) {
         Optional<Payment> paymentData = paymentRepository.findById(id);
 
         if (paymentData.isPresent()) {
@@ -65,7 +65,7 @@ public class PaymentController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public ResponseEntity<Payment> updatePayment(@PathVariable Integer id, @RequestBody Payment payment) {
+    public ResponseEntity<Payment> updatePayment(@PathVariable String id, @RequestBody Payment payment) {
         Optional<Payment> paymentData = paymentRepository.findById(id);
 
         if (paymentData.isPresent()) {
@@ -81,6 +81,8 @@ public class PaymentController {
                 _payment.setPaymentDate(null);
             }
 
+            _payment.setUpdatedAt(LocalDateTime.now());
+
             return new ResponseEntity<>(paymentRepository.save(_payment), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -89,7 +91,7 @@ public class PaymentController {
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deletePayment(@PathVariable Integer id) {
+    public ResponseEntity<HttpStatus> deletePayment(@PathVariable String id) {
         try {
             paymentRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -1,4 +1,4 @@
-package com.shipping.pricing_service.model;
+package com.shipping.shipment_service.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
