@@ -21,12 +21,6 @@ public class GatewayConfig {
                 .route("customer-service", r -> r
                         .path("/api/customers", "/api/customers/**")
                         .uri("http://localhost:8084"))
-                .route("shipment-service", r -> r
-                        .path("/api/shipments", "/api/shipments/**")
-                        .uri("http://localhost:8083"))
-                .route("payment-service", r -> r
-                        .path("/api/payments", "/api/payments/**")
-                        .uri("http://localhost:8082"))
                 .route("tracking-service", r -> r
                         .path("/api/tracking", "/api/tracking/**")
                         .uri("http://localhost:8086"))
