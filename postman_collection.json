@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "b9a12c34-5678-4321-9abc-def012345678",
+		"name": "Shipping Service Orchestration API Collection",
+		"description": "Complete collection for testing Orchestrator, Customer, Shipment, Payment, and Tracking endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Orchestrator",
+			"item": [
+				{
+					"name": "Create & Orchestrate Order (Saga)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": 1,\n  \"originCity\": \"Jakarta\",\n  \"destinationCity\": \"Surabaya\",\n  \"weight\": 2.5,\n  \"serviceType\": \"EXPRESS\",\n  \"paymentMethod\": \"CREDIT_CARD\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Orchestrated Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Order Outcome by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Customer Service",
+			"item": [
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phoneNumber\": \"08123456789\",\n  \"address\": \"Jl. Sudirman No. 45, Jakarta\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Shipment Service",
+			"item": [
+				{
+					"name": "Create Pricing Rate Master",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"originCity\": \"Jakarta\",\n  \"destinationCity\": \"Surabaya\",\n  \"serviceType\": \"EXPRESS\",\n  \"price\": 15000.00,\n  \"weight\": 1.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/shipments/pricing",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"shipments",
+								"pricing"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Shipments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/shipments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"shipments"
+							]
+						}
+					}
+				},
+				{
+					"name": "Track Shipment by Resi",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/shipments/track/RESI-1712345678900",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"shipments",
+								"track",
+								"RESI-1712345678900"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Payment Service",
+			"item": [
+				{
+					"name": "Get All Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"payments"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Payment by Shipment ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/payments/shipment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"payments",
+								"shipment",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Tracking Service",
+			"item": [
+				{
+					"name": "Get Tracking Info by Resi",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8086/api/tracking/RESI-1712345678900",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"api",
+								"tracking",
+								"RESI-1712345678900"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Tracking Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"IN_TRANSIT\",\n  \"location\": \"Bandung Hub\",\n  \"timestamp\": \"2026-07-23T05:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8086/api/tracking/RESI-1712345678900/update-status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"api",
+								"tracking",
+								"RESI-1712345678900",
+								"update-status"
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
