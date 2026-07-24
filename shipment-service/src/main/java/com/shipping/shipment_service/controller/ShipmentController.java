@@ -2,7 +2,7 @@ package com.shipping.shipment_service.controller;
 
 import com.shipping.shipment_service.model.Shipment;
 import com.shipping.shipment_service.repository.ShipmentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +17,11 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/shipments")
+@RequiredArgsConstructor
 public class ShipmentController {
 
-    @Autowired
-    private ShipmentRepository shipmentRepository;
-
-    @Autowired
-    private PricingRepository pricingRepository;
+    private final ShipmentRepository shipmentRepository;
+    private final PricingRepository pricingRepository;
 
     // CREATE
     @PostMapping

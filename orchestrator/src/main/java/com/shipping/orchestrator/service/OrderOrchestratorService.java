@@ -9,7 +9,7 @@ import com.shipping.orchestrator.model.OrderResult;
 import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
+@RequiredArgsConstructor
 public class OrderOrchestratorService {
 
     private static final Logger log = LoggerFactory.getLogger(OrderOrchestratorService.class);
@@ -29,17 +30,10 @@ public class OrderOrchestratorService {
     private final Map<Long, OrderResult> orderStore = new ConcurrentHashMap<>();
     private final AtomicLong idGenerator = new AtomicLong(1);
 
-    @Autowired
-    private CustomerServiceClient customerServiceClient;
-
-    @Autowired
-    private ShipmentServiceClient shipmentServiceClient;
-
-    @Autowired
-    private PaymentServiceClient paymentServiceClient;
-
-    @Autowired
-    private TrackingServiceClient trackingServiceClient;
+    private final CustomerServiceClient customerServiceClient;
+    private final ShipmentServiceClient shipmentServiceClient;
+    private final PaymentServiceClient paymentServiceClient;
+    private final TrackingServiceClient trackingServiceClient;
 
     /**
      * Orchestrates the "create shipping order" business process:

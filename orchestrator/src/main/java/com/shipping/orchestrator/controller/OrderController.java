@@ -3,8 +3,9 @@ package com.shipping.orchestrator.controller;
 import com.shipping.orchestrator.dto.CreateOrderRequest;
 import com.shipping.orchestrator.model.OrderResult;
 import com.shipping.orchestrator.service.OrderOrchestratorService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,19 +14,19 @@ import java.util.Collection;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/orders")
+@RequiredArgsConstructor
 public class OrderController {
 
-    @Autowired
-    private OrderOrchestratorService orderOrchestratorService;
+    private final OrderOrchestratorService orderOrchestratorService;
 
     // CREATE ORDER -> triggers the full orchestration saga
     @PostMapping
     public ResponseEntity<OrderResult> createOrder(@RequestBody CreateOrderRequest request) {
         OrderResult order = orderOrchestratorService.createOrder(request);
 
-        HttpStatus status = "COMPLETED".equals(order.getStatus())
+        HttpStatusCode status = "COMPLETED".equals(order.getStatus())
                 ? HttpStatus.CREATED
-                : HttpStatus.UNPROCESSABLE_ENTITY;
+                : HttpStatusCode.valueOf(422);
 
         return new ResponseEntity<>(order, status);
     }
