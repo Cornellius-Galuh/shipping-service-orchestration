@@ -3,6 +3,13 @@ package com.shipping.orchestrator.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PaymentDTO {
 
     // String, not Integer: payment-service now persists to MongoDB (ObjectId)
@@ -12,55 +19,4 @@ public class PaymentDTO {
     private String paymentMethod;
     private String paymentStatus;
     private LocalDateTime paymentDate;
-
-    public PaymentDTO() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Integer getShipmentId() {
-        return shipmentId;
-    }
-
-    public void setShipmentId(Integer shipmentId) {
-        this.shipmentId = shipmentId;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
-    public LocalDateTime getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(LocalDateTime paymentDate) {
-        this.paymentDate = paymentDate;
-    }
 }

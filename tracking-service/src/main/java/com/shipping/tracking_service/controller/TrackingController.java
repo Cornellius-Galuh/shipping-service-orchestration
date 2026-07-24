@@ -3,7 +3,7 @@ package com.shipping.tracking_service.controller;
 import com.shipping.tracking_service.model.Tracking;
 import com.shipping.tracking_service.model.TrackingHistory;
 import com.shipping.tracking_service.repository.TrackingRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +13,10 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/tracking")
+@RequiredArgsConstructor
 public class TrackingController {
 
-    @Autowired
-    private TrackingRepository trackingRepository;
+    private final TrackingRepository trackingRepository;
 
     // CREATE (Inisiasi awal saat paket baru dibuat)
     @PostMapping

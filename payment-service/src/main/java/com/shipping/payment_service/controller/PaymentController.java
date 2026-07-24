@@ -2,7 +2,7 @@ package com.shipping.payment_service.controller;
 
 import com.shipping.payment_service.model.Payment;
 import com.shipping.payment_service.repository.PaymentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +14,10 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/payments")
+@RequiredArgsConstructor
 public class PaymentController {
 
-    @Autowired
-    private PaymentRepository paymentRepository;
+    private final PaymentRepository paymentRepository;
 
     // CREATE
     @PostMapping

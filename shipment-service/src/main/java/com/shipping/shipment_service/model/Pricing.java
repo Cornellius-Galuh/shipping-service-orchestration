@@ -7,6 +7,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "pricing")
 public class Pricing {
@@ -29,54 +34,6 @@ public class Pricing {
         this.destinationCity = destinationCity;
         this.serviceType = serviceType;
         this.price = price;
-        this.weight = weight;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getOriginCity() {
-        return originCity;
-    }
-
-    public void setOriginCity(String originCity) {
-        this.originCity = originCity;
-    }
-
-    public String getDestinationCity() {
-        return destinationCity;
-    }
-
-    public void setDestinationCity(String destinationCity) {
-        this.destinationCity = destinationCity;
-    }
-
-    public String getServiceType() {
-        return serviceType;
-    }
-
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
         this.weight = weight;
     }
 }
